@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA107_鄭迪_HTML作業二</title>
+	<style>
+		th {color:darkblue; text-align:right}
+		thead, tbody.edu, tfoot {background-color: lightyellow}
+		table {border-color: white}
+
+	</style>
+</head>
+<body>
+<form action="form1.html" method="get">
+
+<table border="1" align="center">
+	<caption style="color:red">填寫個人資料<sub>(有*必填)</sub></caption>
+	<thead>
+	<tr><th>*姓名：</th><td>姓氏：<input type="text" name="surname" size="2" maxlength="2" placeholder="ex鄭">名字：<input type="text" type="givename" size="4"maxlength="4" placeholder="ex迪"> <input type="radio" name="gender" value="male">先生 <input type="radio" name="gender" value="female">小姐 </td></tr>
+	<tr><th>*生日：</th><td><input type="date" name="bday"></td></tr>
+	<tr><th>*身分證字號：</th><td><input type="text" name="idnumber" size="10" maxlength="10" placeholder="A123456789"></td></tr>
+	</thead>
+	<tr><th>*聯絡地址：</th><td><sub>(郵遞區號)</sub><input type="text" name="postcode" size="2" maxlength="5" placeholder="23854"> &nbsp <input type="text" name="homeadd" size="30" placeholder="新北市樹林區OO路OO號OO樓"></td></tr>
+	<tr><th>家中電話：</th><td><input type="tel" name="distnumber" size="1" maxlength="3" placeholder="02">-<input type="tel" name="homenumber" maxlength="10" placeholder="12345678"><sub>(三個電話至少填一個)</sub></td></tr>
+	<tr><th>行動電話：</th><td><input type="tel" name="cellphone" maxlength="10" placeholder="0912-345-678"><sub>(例如：0912-345-678)</sub></td></tr>
+	<tr><th>公司電話：</th><td><input type="tel" name="distnumber" size="1" maxlength="3" placeholder="02">-<input type="tel" name="officenumber" maxlength="10" placeholder="12345678">分機<input type="tel" name="extnumber" size="2" placeholder="123"></td></tr>
+	<tr><th>傳真：</th><td><input type="tel" name="distnumber" size="1" maxlength="3" placeholder="02">-<input type="tel" name="faxnumber" maxlength="10" placeholder="12345678"></td></tr>
+	<tr><th>*E-mail：</th><td><input type="email" name="email" placeholder="abc@abc.com"></td></tr>
+	<tr><th>*密碼：</th><td><input type="password" name="password" size="12" maxlength="8" placeholder="請輸入1~8位字元"><sub>(請自設一個密碼，作為未來再度連線到本網站配合email帳號登入之用)</sub></td></tr>
+	<tr><th>*確認密碼：</th><td><input type="password" name="confirmpassword" size="12" maxlength="8" placeholder="請輸入1~8位字元"><sub>(請再輸入一次上一欄的密碼，上下兩欄密碼必須一致)</sub></td></tr>
+	<tbody class="edu">
+	<tr><th>*最高學歷：</th><td><input type="radio" name="edu" value="phd">博士 <input type="radio" name="edu" value="master">碩士<input type="radio" name="edu" value="bachelor">學士 <input type="radio" name="edu" value="highschool">高中職<input type="radio" name="edu" value="techschool">專科 <input type="radio" name="edu" value="other">其他<br>
+		學校：<input type="text" name="schoolname" size="8" placeholder="OOOO大學">科系：<input type="text" name="major" size="8" placeholder="資訊科學系"><br>
+		<input type="radio" name="status" value="graduated">畢業 <input type="radio" name="status" value="ungraduated">肄業</td></tr>
+	</tbody>
+	<tr><th>服務機構：</th><td><input type="text" name="company" size="30" maxlength="15" placeholder="OO股份有限公司"></td></tr>
+	<tr><th>任職部門：</th><td><input type="text" name="department" size="30" maxlength="15" placeholder="資訊管理部"></td></tr>
+	<tr><th>職稱：</th><td><input type="text" name="titlename" size="30" maxlength="15" placeholder="工程師"></td></tr>
+	<tr><th>辦公地址：</th><td><sub>(郵遞區號)</sub><input type="text" name="postcode" size="2" maxlength="5" placeholder="10065"> &nbsp <input type="text" name="companyadd" size="30" placeholder="台北市中正區OO路OO號OO樓"></td></tr>
+	<tr><th>公司統一編號：</th><td><input type="text" name="companyid" size="10" maxlength="8" placeholder="12345678"></td></tr>
+	<tfoot>
+		<tr><th>*消息來源：</th><td><input list="source" name="source" placeholder="--請選擇--">
+			<datalist id="source">
+  			<option value="消息來源1"> 第一消息來源
+  			<option value="消息來源2"> 第二消息來源
+  			<option value="消息來源2"> 第三消息來源
+			</datalist></td></tr>
+	</tfoot>
+</table>
+<div align="center">
+<button type="submit">
+	送出
+</button>
+<button type="reset">
+	清除
+</button>
+</div>
+</form>
+
+
+
+</body>
+</html>
