@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA107_鄭迪_JavaScript作業二_4rand</title>
+</head>
+<body>
+請寫一個rand(min,max)函數,可以傳入min與max的整數,並回傳一個介於min和max間的整數值(大於等於min,小於等於max)<br> 
+document.write( rand(60,100))：
+
+	<script type="text/javascript">
+	function rand(min, max){
+		var max;
+		var min;
+		var r;
+		r = (Math.random()*(max-min+1))+min
+		return(Math.floor(r));
+	}
+
+	document.write(rand(60,100));
+	
+
+	</script>
+	
+</body>
+</html>

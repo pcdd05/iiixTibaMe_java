@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA107_鄭迪_JavaScript作業三_7roller</title>
+	<style type="text/css">
+		table table td{width:120px;height:120px; font-size:18px; font-family:標楷體; text-align: center}
+		#b_center {color:red;font-size:30px; font-family:標楷體; text-align: center}
+	</style>
+</head>
+<body bgcolor="black">
+
+<br><br>
+<table align="center">
+	<tr><td>
+		<table border="1" align="center" cellspacing="0" width="480" height="480" bordercolor="white">
+			<tr><td id="b_0"><td id="b_1"></td><td id="b_2"></td><td id="b_3"></td></tr>
+			<tr><td id="b_11"></td><td colspan="2" rowspan="2" id="b_center"></td><td id="b_4"></td></tr> 
+			<tr><td id="b_10"></td><td id="b_5"></td></tr>
+			<tr><td id="b_9"></td><td id="b_8"></td><td id="b_7"></td><td id="b_6"></td></tr>
+		</table></td>
+		<!--拉桿圖片用表格存放-->
+		<td><input type="image" src="barup.png" id="bar"></td></tr>
+</table>
+
+<script type="text/javascript">
+var bar = document.getElementById("bar");//拉桿變數
+var rsec = 200;//roller Timeout間隔時間變數
+var st =0;//獎項格閃爍次數變數
+var i = 0;//roller累加變數
+var j = 0;//格id變數
+var bnum ='b_';//格id前綴
+var reset = 0;//第二次起始變數
+var prize = 0;//獎金變數
+var rand = 0;//roller迴圈次數變數
+var yesorno = 0;//中獎與否變數
+
+function random(Max, min){//亂數公式
+	return (Math.floor(Math.random()*(Max-min)+min));
+}
+
+function rollstart(){//rollstart起始(第二次後作起始歸零)
+	document.getElementById(bnum+reset).style.backgroundColor = "black";
+	document.getElementById(bnum+reset).innerHTML = " ";
+	document.getElementById("b_center").innerHTML= " ";
+	rsec = 200;
+	st =0;
+	i=0;
+	j=0;
+	yesorno = random(2,0);//設定是否中獎
+	prize = random(1000,1)*1000;//設定獎金金額
+	bar.src = "bardown.png";//拉桿變圖
+	bar.disabled = "true";//拉桿按鍵失效
+	document.getElementById(bnum+j).style.backgroundColor = "white";//起始後第一格變白
+	rolltime = setTimeout(rollrun, rsec);
+	//設定Timeout間隔rsec變數後執行rollrun
+}
+function rollrun(){//roller run random次數
+		rand = random(60,40)+40;
+		if(i<rand){
+		document.getElementById(bnum+j).style.backgroundColor = "black";//前一格變白
+		i++; 
+		j=i%12;
+		document.getElementById(bnum+j).style.backgroundColor = "white";//i++後下一格變白
+		if(rsec>40)
+			{rsec-=7;} //rsec變數大時逐次減少間隔(加速)
+		if((i>rand*0.8))
+			{rsec +=40;}//當roller次數剩二成間隔速率增加(變慢)
+		rolltime = setTimeout(rollrun, rsec);
+		//重新間隔呼叫rollrun作迴圈	
+		}else{	
+			clearTimeout(rolltime);
+			showtime = setTimeout(showtimeb, 50);}
+			// 跑完rand次數後執行showtimeb
+}
+
+function showtimeb(){//獎格閃爍(黑色)
+	if(st<7){
+	document.getElementById(bnum+j).style.backgroundColor = "black";
+	showtime = setTimeout(showtimew, 50);
+	clearTimeout(showtimew);
+	st++;}
+	else {
+		showtime = setTimeout(showprize, 0);
+		//閃爍完七次執行showprize
+	}
+
+}
+function showtimew(){//獎格閃爍(黃色)
+	document.getElementById(bnum+j).style.backgroundColor = "yellow";
+	showtime = setTimeout(showtimeb, 50);
+	clearTimeout(showtimeb);
+}
+function showprize(){//獎格執行是否中獎/獎金
+	if(yesorno != 0){
+	document.getElementById(bnum+j).style.backgroundColor = "yellow";
+	document.getElementById(bnum+j).innerHTML= prize;
+	document.getElementById("b_center").innerHTML= "恭喜中獎<br><br>再來一把<br>";
+	clearTimeout(showtimeb);
+	bar.src="barup.png"//拉桿重置功能恢復
+	bar.disabled = "";
+	reset = j;//存入最後一格的變數以便第二次rollstart重置
+	}
+	else{
+	document.getElementById(bnum+j).style.backgroundColor = "lightgrey";
+	document.getElementById(bnum+j).innerHTML= "銘謝惠顧";
+	document.getElementById("b_center").innerHTML= "你槓龜啦<br><br>再試一次<br>";
+	clearTimeout(showtimeb);
+	bar.src="barup.png"
+	bar.disabled = "";
+	reset = j;
+	}
+}
+
+
+
+
+
+function main(){//main方法定義拉桿動作click執行rollstart
+	bar.addEventListener("click", rollstart, false);
+}
+
+window.addEventListener("load", main, false);//全載入後執行main
+</script>
+
+
+
+</body>
+</html>		

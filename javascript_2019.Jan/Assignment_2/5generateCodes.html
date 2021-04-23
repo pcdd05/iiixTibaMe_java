@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CA107_鄭迪_JavaScript作業二_5generateCodes</title>
+</head>
+<body>
+	
+請寫一段JavaScript的程式,在網頁上隨機產生4~7個介於間0..9之不重覆不同顏色的數字<br>
+
+<script type="text/javascript">
+	function randomcolor(){
+		var letter = new Array('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F');
+		var color = '#';
+		var r;
+		for (var i=0; i<6; i++){
+			r = Math.floor(Math.random()*(15-0+1));
+			color+=letter[r];
+		}
+		return color;
+	}
+
+	var times;
+	times = Math.floor((Math.random()*(7-4+1)+4));
+	var num = new Array('0','1','2','3','4','5','6','7','8','9');
+	var x;
+	var y=10;
+	var rcolor = new Array(times);
+	for (var i=0; i<times; i++){
+		x = Math.floor(Math.random()*(y-0+1));
+		y -= 1;
+		for (var j=0; j<times; ){
+			rcolor[i]= randomcolor();
+			if(i==j){
+				j++;
+			}else if (rcolor[i]!=rcolor[j]){
+				j++}
+			else continue;;
+		}
+		document.write('<span style=color:',rcolor[i],'>',num.splice(x,1),'</span>');
+		}
+		
+
+</script>
+
+</body>
+</html>
